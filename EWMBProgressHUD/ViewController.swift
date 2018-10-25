@@ -64,12 +64,14 @@ class ViewController: UIViewController {
     }
     @objc private func onClickLoadingButton(){
         EWMBProgressHud.showLoadingHudView(message: "Loading")
+        /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             EWMBProgressHud.hideHud()
         }
     }
     @objc private func onClickSecondLoadingButton(){
         EWMBProgressHud.showLoadingHudView(view: self.view, message: "蒙层Loading", isMask: true)
+        /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             EWMBProgressHud.hideHud()
         }
