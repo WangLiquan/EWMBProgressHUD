@@ -6,8 +6,10 @@
 <p>实现五种形式:1.背景半透明显示文字,2.背景透明显示文字,3.背景半透明显示Loading,4.背景透明显示Loading,5.背景透明显示自定义icon+文字</p>
 
 # 使用方法示例:
-1.使用CocoaPods或手动将MBProgressHUD加入项目.
-2.将EWMBProgressHUD.swift文件加入项目
+1.使用CocoaPods或手动将MBProgressHUD加入项目.   
+   
+2.将EWMBProgressHUD.swift文件加入项目.  
+   
 3.调用时:
 ```
 @objc private func onClickTopButton(){
