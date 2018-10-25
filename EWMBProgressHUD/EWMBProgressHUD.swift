@@ -64,10 +64,12 @@ class EWMBProgressHud {
         let HUD = self.createHud(view: view, isMask: false)
         HUD?.label.text = message
         HUD?.label.numberOfLines = 0
+        /// 如果有Icon展示.
         if let icon = icon {
             HUD?.customView = UIImageView.init(image: UIImage.init(named: "\(icon)"))
         }
         HUD?.mode = .customView
+        /// 在hud消失时调用completeBlock.
         DispatchQueue.main.asyncAfter(deadline: .now() + hudShowTime) {
             HUD?.hide(animated: true)
             guard let completeBlock = completeBlock else {

@@ -15,27 +15,27 @@
 3.调用时:
 ```
 @objc private func onClickTopButton(){
-EWMBProgressHud.showTextHudTips(message: "蒙层", view: self.view, isMask: true, afterDelay: 1)
+    EWMBProgressHud.showTextHudTips(message: "蒙层", view: self.view, isMask: true, afterDelay: 1)
 }
 @objc private func onClickCenterButton(){
-EWMBProgressHud.showTextHudTips(message: "Toast")
+    EWMBProgressHud.showTextHudTips(message: "Toast")
 }
 @objc private func onClickLoadingButton(){
-EWMBProgressHud.showLoadingHudView(message: "Loading")
-/// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
-DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-EWMBProgressHud.hideHud()
-}
+    EWMBProgressHud.showLoadingHudView(message: "Loading")
+    /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+        EWMBProgressHud.hideHud()
+    }
 }
 @objc private func onClickSecondLoadingButton(){
-EWMBProgressHud.showLoadingHudView(view: self.view, message: "蒙层Loading", isMask: true)
-/// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
-DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-EWMBProgressHud.hideHud()
-}
+    EWMBProgressHud.showLoadingHudView(view: self.view, message: "蒙层Loading", isMask: true)
+    /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+        EWMBProgressHud.hideHud()
+    }
 }
 @objc private func onClickSuccessButton(){
-EWMBProgressHud.showSuccesshTips(message: "Success")
+    EWMBProgressHud.showSuccesshTips(message: "Success")
 }
 ```
 
