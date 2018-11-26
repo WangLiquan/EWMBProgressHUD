@@ -38,7 +38,35 @@ class EWMBProgressHud {
         let HUD = MBProgressHUD.showAdded(to: supview
             , animated: true)
         /// 默认不遮盖navigationBar
-        HUD.frame = CGRect(x: 0, y: EWScreenInfo.navigationHeight, width: EWScreenInfo.Width, height: EWScreenInfo.Height - EWScreenInfo.navigationHeight)
+        HUD.frame = CGRect(x: 0, y: 0, width: EWScreenInfo.Width, height: EWScreenInfo.Height - EWScreenInfo.navigationHeight)
+        HUD.animationType = .zoom
+        if isMask {
+            /// 蒙层type,背景半透明.
+            HUD.backgroundView.color = UIColor(white: 0.0, alpha: 0.4)
+        } else {
+            /// 非蒙层type,没有背景.
+            HUD.backgroundView.color = UIColor.clear
+            HUD.bezelView.backgroundColor = UIColor(white: 0.0, alpha: 0.9)
+            HUD.contentColor = UIColor.white
+        }
+        HUD.removeFromSuperViewOnHide = true
+        HUD.show(animated: true)
+        return HUD
+    }
+
+    /// 创建hud,覆盖navigationbar
+    ///
+    /// - Parameters:
+    ///   - navigationController:
+    ///   - isMask:  是否蒙层覆盖
+    /// - Returns: hud实例
+    private class func createHud(navigationController : UINavigationController?, isMask : Bool = false) -> MBProgressHUD? {
+        guard let navc = navigationController else {return nil}
+        guard let supview = navc.view else {return nil}
+        let HUD = MBProgressHUD.showAdded(to: supview
+            , animated: true)
+        /// 默认不遮盖navigationBar
+        HUD.frame = CGRect(x: 0, y: 0, width: EWScreenInfo.Width, height: EWScreenInfo.Height)
         HUD.animationType = .zoom
         if isMask {
             /// 蒙层type,背景半透明.
@@ -84,6 +112,13 @@ extension EWMBProgressHud {
     /// 展示loadingHUD,可用于网络请求
     class func showLoadingHudView (view : UIView? = UIApplication.shared.keyWindow ,message:String?, isMask : Bool = false){
         let HUD = self.createHud(view: view, isMask: isMask)
+        HUD?.mode = .indeterminate
+        HUD?.label.text = message
+        hud = HUD
+    }
+    /// 展示loadingHUD,可用于网络请求
+    class func showLoadingHudView (NAVC : UINavigationController? ,message:String?, isMask : Bool = false){
+        let HUD = self.createHud(navigationController: NAVC,isMask :isMask)
         HUD?.mode = .indeterminate
         HUD?.label.text = message
         hud = HUD

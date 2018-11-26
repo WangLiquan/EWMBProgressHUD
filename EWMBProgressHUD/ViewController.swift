@@ -49,6 +49,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.title = "啦啦啦"
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = true
         self.view.addSubview(topButton)
         self.view.addSubview(middleButton)
         self.view.addSubview(loadButton)
@@ -61,6 +64,7 @@ class ViewController: UIViewController {
     }
     @objc private func onClickCenterButton(){
         EWMBProgressHud.showTextHudTips(message: "Toast")
+        EWMBProgressHud.showLoadingHudView(NAVC: self.navigationController, message: "",isMask: true)
     }
     @objc private func onClickLoadingButton(){
         EWMBProgressHud.showLoadingHudView(message: "Loading")
