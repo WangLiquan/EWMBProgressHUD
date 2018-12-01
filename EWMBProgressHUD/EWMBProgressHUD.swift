@@ -33,12 +33,13 @@ class EWMBProgressHud {
     /// - Parameters:
     ///   - view: 加载到哪个View展示.
     ///   - isMask: 是否是蒙层形式,背景半透明.
-    private class func createHud(view : UIView? = UIApplication.shared.keyWindow, isMask : Bool = false) -> MBProgressHUD? {
+    ///   - isTranslucent: 项目中navigationBar是否计算frame,默认是false,如果项目中有调用self.navigationController?.navigationBar.isTranslucent = true则传入true
+    private class func createHud(view : UIView? = UIApplication.shared.keyWindow, isMask : Bool = false ,isTranslucent: Bool = false) -> MBProgressHUD? {
         guard let supview = view ?? UIApplication.shared.keyWindow else {return nil}
         let HUD = MBProgressHUD.showAdded(to: supview
             , animated: true)
-        /// 默认不遮盖navigationBar
-        HUD.frame = CGRect(x: 0, y: 0, width: EWScreenInfo.Width, height: EWScreenInfo.Height - EWScreenInfo.navigationHeight)
+        let top = isTranslucent ? 0 : EWScreenInfo.navigationHeight
+        HUD.frame = CGRect(x: 0, y: top, width: EWScreenInfo.Width, height: EWScreenInfo.Height - top)
         HUD.animationType = .zoom
         if isMask {
             /// 蒙层type,背景半透明.
@@ -57,7 +58,7 @@ class EWMBProgressHud {
     /// 创建hud,覆盖navigationbar
     ///
     /// - Parameters:
-    ///   - navigationController:
+    ///   - navigationController: 如果想要覆盖navigationBar则需要传入navigationController
     ///   - isMask:  是否蒙层覆盖
     /// - Returns: hud实例
     private class func createHud(navigationController : UINavigationController?, isMask : Bool = false) -> MBProgressHUD? {
@@ -65,7 +66,6 @@ class EWMBProgressHud {
         guard let supview = navc.view else {return nil}
         let HUD = MBProgressHUD.showAdded(to: supview
             , animated: true)
-        /// 默认不遮盖navigationBar
         HUD.frame = CGRect(x: 0, y: 0, width: EWScreenInfo.Width, height: EWScreenInfo.Height)
         HUD.animationType = .zoom
         if isMask {
@@ -88,8 +88,13 @@ class EWMBProgressHud {
     ///   - icon: 显示图片
     ///   - view: 加载到哪个View上展示
     ///   - completeBlock: HUD消失后调用block
-    private class func showHudTips (message : String?, icon : String?, view : UIView?, completeBlock : (()->(Void))?) {
-        let HUD = self.createHud(view: view, isMask: false)
+    private class func showHudTips (message : String?, icon : String?, view : UIView?, coverNavigationController: UINavigationController?,completeBlock : (()->(Void))?) {
+        var HUD: MBProgressHUD?
+        if coverNavigationController != nil {
+            HUD = self.createHud(navigationController: coverNavigationController!)
+        }else {
+            HUD = self.createHud(view: view, isMask: false)
+        }
         HUD?.label.text = message
         HUD?.label.numberOfLines = 0
         /// 如果有Icon展示.
