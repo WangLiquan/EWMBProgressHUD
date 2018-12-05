@@ -109,7 +109,7 @@ class ViewController: UIViewController {
     }
     @objc private func onClickCoverNavigationBarLoadingButton(){
         /// 覆盖navigationBar需要从NavitionController中添加View,所以需要传入navigationController
-        EWMBProgressHud.showLoadingHudView(NAVC: self.navigationController, message: "覆盖NavigationBar的LoadingView",isMask: true)
+        EWMBProgressHud.showLoadingHudView(NAVC: self.navigationController, message: "覆盖NavigationBar的LoadingView")
         /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             EWMBProgressHud.hideHud()
