@@ -170,7 +170,7 @@ extension EWMBProgressHud {
         HUD?.detailsLabel.text = message
         HUD?.hide(animated: true, afterDelay: afterDelay)
     }
-    /// 覆盖NavigationBar的loadingHUD,可用于网络请求
+    /// 覆盖NavigationBar的l类ToastHUD
     ///
     /// - Parameters:
     ///   - NAVC: 要覆盖NavigationBar,需要传入NavigationController
