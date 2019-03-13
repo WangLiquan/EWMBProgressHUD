@@ -67,7 +67,6 @@ class ViewController: UIViewController {
         return button
     }()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -84,30 +83,30 @@ class ViewController: UIViewController {
         self.view.addSubview(coverNavigaionButton)
     }
 
-    @objc private func onClickTopButton(){
+    @objc private func onClickTopButton() {
         EWMBProgressHud.showTextHudTips(message: "蒙层", view: self.view, isMask: true, afterDelay: 1)
     }
-    @objc private func onClickCenterButton(){
+    @objc private func onClickCenterButton() {
         EWMBProgressHud.showTextHudTips(message: "Toast", isTranslucent: true)
     }
-    @objc private func onClickLoadingButton(){
+    @objc private func onClickLoadingButton() {
         EWMBProgressHud.showLoadingHudView(message: "Loading", isTranslucent: true)
         /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             EWMBProgressHud.hideHud()
         }
     }
-    @objc private func onClickSecondLoadingButton(){
+    @objc private func onClickSecondLoadingButton() {
         EWMBProgressHud.showLoadingHudView(view: self.view, message: "蒙层Loading", isMask: true)
         /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             EWMBProgressHud.hideHud()
         }
     }
-    @objc private func onClickSuccessButton(){
+    @objc private func onClickSuccessButton() {
         EWMBProgressHud.showSuccesshTips(message: "Success",afterDelay: 1, isTranslucent: true)
     }
-    @objc private func onClickCoverNavigationBarLoadingButton(){
+    @objc private func onClickCoverNavigationBarLoadingButton() {
         /// 覆盖navigationBar需要从NavitionController中添加View,所以需要传入navigationController
         EWMBProgressHud.showLoadingHudView(NAVC: self.navigationController, message: "覆盖NavigationBar的LoadingView")
         /// loadingView必需手动隐藏!!!结束loading请调用hideHud()!!!
@@ -115,8 +114,7 @@ class ViewController: UIViewController {
             EWMBProgressHud.hideHud()
         }
     }
-    @objc private func onClicKCoverNavigationBarButton(){
+    @objc private func onClicKCoverNavigationBarButton() {
         EWMBProgressHud.showTextHudTips(NAVC: self.navigationController, message: "覆盖NavigationBar的蒙层", isMask: true,afterDelay: 1)
     }
 }
-

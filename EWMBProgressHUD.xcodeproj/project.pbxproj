@@ -164,6 +164,7 @@
 				79536CE121818F7000340397 /* Frameworks */,
 				79536CE221818F7000340397 /* Resources */,
 				49B236DC48584051330EEB45 /* [CP] Embed Pods Frameworks */,
+				7985883F2238FF2500F21106 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -298,6 +299,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EWMBProgressHUD/Pods-EWMBProgressHUD-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7985883F2238FF2500F21106 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		DEEB644D244E1FD668349A9C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
