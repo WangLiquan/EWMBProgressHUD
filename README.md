@@ -1,6 +1,8 @@
 # EWMBProgressHUD
-<h3>对MBProgressHUD进行封装</h3>
-  
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
+### 对MBProgressHUD进行封装
+
 对调用方法进行封装,实现一行代码弹出HUD
   
 实现七种形式:
@@ -15,11 +17,11 @@
 ![效果图预览](https://github.com/WangLiquan/EWMBProgressHUD/raw/master/images/demonstration.gif)
 
 # 使用方法示例:
-1.使用CocoaPods或手动将MBProgressHUD加入项目.   
+1. 使用CocoaPods或手动将MBProgressHUD加入项目.   
    
-2.将EWMBProgressHUD.swift文件加入项目.  
+2. 将EWMBProgressHUD.swift文件加入项目.  
    
-3.调用时:
+3. 调用时:
 ```
 @objc private func onClickTopButton(){
     EWMBProgressHud.showTextHudTips(message: "蒙层", view: self.view, isMask: true, afterDelay: 1)
